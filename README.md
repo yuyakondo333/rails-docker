@@ -23,5 +23,10 @@ docker-compose up -d
 ```
 -dでバックグランドで実行されるため、ターミナルで他の作業が可能
 
-## 5. 動作確認
+## 5. DBを作成
+以下のコマンドを実行
+docker-compose run --rm web rails db:create
+docker-compose run --rm web rails db:migrate
+
+## 6. 動作確認
 localhost:3000にブラウザでアクセス
