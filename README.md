@@ -1,24 +1,32 @@
-# README
+# 環境構築方法
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 1. git clone
+以下のURLからリポジトリを作成してローカル環境へクローン
+https://github.com/ihatov08/rails7_docker_template
 
-Things you may want to cover:
+## 2. Dockerfile, docker-compose.ymlを新規作成、database.ymlを編集
+今回のWebアプリは以下のバージョンとなる
+- ruby: 3.2.2
+- rails: 7.0.6
+- postgres: 12
 
-* Ruby version
+## 3. imageを作成
+以下のコマンドを実行
+```
+docker-compose build
+```
 
-* System dependencies
+## 4. コンテナを立ち上げる
+以下のコマンドを実行
+```
+docker-compose up -d
+```
+-dでバックグランドで実行されるため、ターミナルで他の作業が可能
 
-* Configuration
+## 5. DBを作成
+以下のコマンドを実行
+docker-compose run --rm web rails db:create
+docker-compose run --rm web rails db:migrate
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 6. 動作確認
+localhost:3000にブラウザでアクセス
